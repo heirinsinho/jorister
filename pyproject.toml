@@ -1,0 +1,19 @@
+[project]
+name = "jorister-cli"
+version = "0.1.0"
+description = "Project CLI tools for Jorister."
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = [
+    "qrcode[pil]==8.2",
+]
+
+[project.scripts]
+jorister-qr = "jorister_cli.qr:main"
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.hatch.build.targets.wheel]
+packages = ["jorister_cli"]
