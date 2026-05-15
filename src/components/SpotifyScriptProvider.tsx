@@ -1,40 +1,51 @@
 "use client";
 
-import React, { createContext, useContext, useEffect, useState } from "react";
+import type React from "react";
+import { createContext, useContext, useEffect, useState } from "react";
+import { getSpotifySdkWindow, hasSpotifySdk } from "@/lib/spotifySdkWindow";
 
 interface ScriptContextType {
-  isReady: boolean;
+	isReady: boolean;
 }
 
 const ScriptContext = createContext<ScriptContextType>({ isReady: false });
 
 export const useSpotifyWebPlaybackSDK = () => useContext(ScriptContext);
 
-export const SpotifyScriptProvider = ({ children }: { children: React.ReactNode }) => {
-  const [isReady, setIsReady] = useState(false);
+export const SpotifyScriptProvider = ({
+	children,
+}: {
+	children: React.ReactNode;
+}) => {
+	const [isReady, setIsReady] = useState(hasSpotifySdk);
 
-  useEffect(() => {
-    // Check if the script is already loaded
-    if (window.Spotify) {
-      setIsReady(true);
-      return;
-    }
+	useEffect(() => {
+		const spotifyWindow = getSpotifySdkWindow();
 
-    const script = document.createElement("script");
-    script.src = "https://sdk.scdn.co/spotify-player.js";
-    script.async = true;
+		if (spotifyWindow.Spotify) {
+			setIsReady(true);
+			return;
+		}
 
-    // The SDK calls window.onSpotifyWebPlaybackSDKReady when it's ready
-    window.onSpotifyWebPlaybackSDKReady = () => {
-      setIsReady(true);
-    };
+		const script = document.createElement("script");
+		script.src = "https://sdk.scdn.co/spotify-player.js";
+		script.async = true;
 
-    document.body.appendChild(script);
+		// The SDK calls window.onSpotifyWebPlaybackSDKReady when it's ready
+		spotifyWindow.onSpotifyWebPlaybackSDKReady = () => {
+			setIsReady(true);
+		};
 
-    return () => {
-      document.body.removeChild(script);
-    };
-  }, []);
+		document.body.appendChild(script);
 
-  return <ScriptContext.Provider value={{ isReady }}>{children}</ScriptContext.Provider>;
+		return () => {
+			document.body.removeChild(script);
+		};
+	}, []);
+
+	return (
+		<ScriptContext.Provider value={{ isReady }}>
+			{children}
+		</ScriptContext.Provider>
+	);
 };

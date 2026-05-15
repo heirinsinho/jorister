@@ -1,0 +1,17 @@
+services:
+  web:
+    image: lusi-hits-web:prod
+    build:
+      context: .
+      target: runner
+    env_file:
+      - path: .env
+        required: false
+      - path: .env.local
+        required: false
+    environment:
+      NEXT_TELEMETRY_DISABLED: "1"
+      HOSTNAME: 0.0.0.0
+      PORT: 3000
+    ports:
+      - "3000:3000"
