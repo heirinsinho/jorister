@@ -4,7 +4,7 @@ Next.js app for scanning Spotify track QR codes and playing them through Spotify
 
 ## Environment
 
-Create a local environment file:
+Create a local environment file. Docker Compose will read either `.env` or `.env.local`; `.env.local` overrides `.env` when both exist.
 
 ```bash
 cp .env.example .env.local
@@ -33,17 +33,27 @@ openssl rand -base64 32
 
 ## Getting Started
 
-First, run the development server:
+First, build and run the development container:
 
 ```bash
-npm run dev
+docker compose up --build
 ```
 
 Open [http://127.0.0.1:3000](http://127.0.0.1:3000) with your browser to see the result.
 
+The app runs Next.js inside Docker, including npm install. You do not need Node.js or npm installed on the host machine.
+
 ## Linting
 
 ```bash
-npm run lint
-npm run lint:fix
+docker compose run --rm web npm run lint
+docker compose run --rm web npm run lint:fix
+```
+
+## Production Image
+
+Build and run the production image locally:
+
+```bash
+docker compose -f compose.prod.yaml up --build
 ```
