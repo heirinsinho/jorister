@@ -1,6 +1,6 @@
 services:
   web:
-    image: lusi-hits-web:dev
+    image: jorister-web:dev
     build:
       context: .
       target: dev

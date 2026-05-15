@@ -1,6 +1,6 @@
 services:
   web:
-    image: lusi-hits-web:prod
+    image: jorister-web:prod
     build:
       context: .
       target: runner

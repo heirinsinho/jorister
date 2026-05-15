@@ -19,21 +19,20 @@ export default function Home() {
 
 	return (
 		<main className="flex min-h-screen flex-col items-center justify-center p-6 bg-[var(--color-background)] text-slate-100">
-			<div className="flex flex-col items-center justify-center space-y-8 w-full max-w-md bg-[var(--color-background)] p-10 rounded-3xl border border-transparent">
+			<div className="flex w-full max-w-3xl flex-col items-center justify-center space-y-8 rounded-3xl border border-transparent bg-[var(--color-background)] p-10">
 				<div className="flex flex-col items-center space-y-2">
-					<div className="relative w-[360px] h-[120px] mb-4 transition-transform duration-500 hover:scale-105">
+					<div className="relative mb-4 h-[190px] w-[min(88vw,640px)] transition-transform duration-500 hover:scale-105 sm:h-[230px]">
 						<Image
-							src="/logo-user-cropped.png"
-							alt="Lusi-Hits Logo"
+							src="/logo-transparent.png"
+							alt="jorister Logo"
 							fill
 							className="object-contain"
 							priority
 						/>
 					</div>
-					<h1 className="sr-only">Lusi-Hits Blind</h1>
+					<h1 className="sr-only">jorister Blind</h1>
 					<p className="text-slate-400 text-center text-lg leading-relaxed max-w-xs">
-						El reproductor perfecto para tu partida. Sin nombres, sin carátulas.
-						Solo música.
+						El juego de música en el que Joram también gana siempre.
 					</p>
 				</div>
 
@@ -42,7 +41,7 @@ export default function Home() {
 						<div className="w-8 h-8 border-4 border-green-500 border-t-transparent rounded-full animate-spin" />
 					</div>
 				) : session ? (
-					<div className="flex flex-col items-center space-y-6 w-full">
+					<div className="flex w-full max-w-md flex-col items-center space-y-6">
 						<div className="bg-slate-700/30 px-6 py-3 rounded-full flex items-center space-x-3 border border-slate-600/50">
 							<div className="w-2 h-2 rounded-full bg-green-500 animate-pulse" />
 							<p className="text-sm font-medium text-slate-200">
@@ -75,7 +74,7 @@ export default function Home() {
 						</button>
 					</div>
 				) : (
-					<div className="flex flex-col items-center space-y-4 w-full">
+					<div className="flex w-full max-w-md flex-col items-center space-y-4">
 						<button
 							type="button"
 							onClick={handleLogin}

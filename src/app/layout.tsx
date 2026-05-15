@@ -7,8 +7,11 @@ import { SpotifyScriptProvider } from "@/components/SpotifyScriptProvider";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-	title: "Lusi-Hits Blind Player",
+	title: "Jorister",
 	description: "Un reproductor ciego de Spotify para jugar a Lushits",
+	icons: {
+		icon: "/favicon.ico",
+	},
 };
 
 export default function RootLayout({
@@ -18,9 +21,7 @@ export default function RootLayout({
 }>) {
 	return (
 		<html lang="es">
-			<body
-				className={`${inter.className} min-h-screen bg-[#0f172a] text-slate-50 antialiased`}
-			>
+			<body className={`${inter.className} min-h-screen text-slate-50 antialiased`}>
 				<AuthProvider>
 					<SpotifyScriptProvider>{children}</SpotifyScriptProvider>
 				</AuthProvider>

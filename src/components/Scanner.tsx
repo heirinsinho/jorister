@@ -98,7 +98,7 @@ export default function Scanner({ onScan }: ScannerProps) {
 					Escanea una Canción
 				</h2>
 				<p className="text-slate-400 text-sm">
-					Apunta con la cámara a un código QR de Spotify o enlace de Lusi-Hits.
+					Apunta con la cámara a un código QR de Spotify o enlace de jorister.
 				</p>
 			</div>
 

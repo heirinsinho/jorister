@@ -156,7 +156,7 @@ export default function SpotifyPlayer({
 		setError(null);
 
 		const spotifyPlayer = new spotifyWindow.Spotify.Player({
-			name: "Lusi-Hits Player",
+			name: "jorister Player",
 			getOAuthToken: (cb) => {
 				cb(accessToken);
 			},
