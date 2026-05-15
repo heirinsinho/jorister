@@ -6,10 +6,13 @@ readme = "README.md"
 requires-python = ">=3.12"
 dependencies = [
     "qrcode[pil]==8.2",
+    "spotipy==2.25.1",
+    "tqdm==4.67.1",
 ]
 
 [project.scripts]
 jorister-qr = "jorister_cli.qr:main"
+jorister-playlist = "jorister_cli.playlist:main"
 
 [build-system]
 requires = ["hatchling"]

@@ -45,3 +45,6 @@ next-env.d.ts
 
 .venv
 public/qr
+.cache
+.spotipy-playlist-cache
+*.csv
